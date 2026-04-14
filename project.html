@@ -304,13 +304,17 @@
 
 <script>
   function scale() {
-    var w = document.getElementById('scaleWrapper');
+    var wrapper = document.getElementById('scaleWrapper');
     var s = window.innerWidth / 1920;
-    w.style.transform = 'scale(' + s + ')';
-    document.body.style.height = Math.ceil(w.offsetHeight * s) + 'px';
+    wrapper.style.transform = 'scale(' + s + ')';
+    wrapper.style.transformOrigin = 'top left';
+    // scaleWrapper의 실제 렌더링 높이를 계산해서 body에 반영
+    var contentHeight = wrapper.scrollHeight;
+    document.body.style.height = Math.ceil(contentHeight * s) + 'px';
   }
-  scale();
+  window.addEventListener('load', scale);
   window.addEventListener('resize', scale);
+  scale();
 </script>
 </body>
 </html>
