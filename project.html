@@ -24,8 +24,8 @@
       left: calc(var(--vw) * 3.125);
       right: calc(var(--vw) * 3.125);
       height: calc(var(--vw) * 3.073);
-      background: rgba(255,255,255,0.25);
-      border: 1px solid rgba(223,222,222,0.4);
+      background: rgba(252,251,250,0.2);
+      border: 1px solid rgba(223,222,222,0.5);
       border-radius: calc(var(--vw) * 1.146);
       display: flex;
       align-items: center;
@@ -33,8 +33,25 @@
       padding: 0 calc(var(--vw) * 2.083);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.9), inset 0 1px 0 rgba(255,255,255,0.4);
+      /* Light -45°, 80% → 좌상단 하이라이트, 우하단 그림자 */
+      box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.8),
+        inset -1px -1px 0 rgba(0,0,0,0.06),
+        inset 0 -1px 0 rgba(255,255,255,0.6);
+      overflow: hidden;
       z-index: 100;
+    }
+
+    /* 하단 반사광 라인 */
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      width: 90%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent 100%);
+      pointer-events: none;
     }
 
     .header-logo { height: calc(var(--vw) * 1.458); width: auto; display: block; }
