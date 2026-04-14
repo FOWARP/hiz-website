@@ -6,38 +6,43 @@
   <title>HIZ — Project</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
   <style>
-    /* 1920px 기준: px / 1920 * 100 = vw */
+    /*
+      --vw = min(window.innerWidth, 1920) / 100  (JS로 설정)
+      1920px 기준: 모든 크기는 calc(var(--vw) * X) 사용
+      X = 피그마 px값 / 1920 * 100
+    */
+    :root { --vw: 19.2px; } /* 기본값 1920px 기준 */
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body { background: #fff; overflow-x: hidden; }
 
-    /* HEADER — fixed, top 20px, left/right 60px, height 59px */
+    /* HEADER */
     .header {
       position: fixed;
-      top: 1.042vw;
-      left: 3.125vw;
-      right: 3.125vw;
-      height: 3.073vw;
+      top: calc(var(--vw) * 1.042);
+      left: calc(var(--vw) * 3.125);
+      right: calc(var(--vw) * 3.125);
+      height: calc(var(--vw) * 3.073);
       background: rgba(252,251,250,0.6);
       border: 1px solid #dfdede;
-      border-radius: 1.146vw;
+      border-radius: calc(var(--vw) * 1.146);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2.083vw;
+      padding: 0 calc(var(--vw) * 2.083);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       z-index: 100;
     }
 
-    .header-logo { height: 1.458vw; width: auto; display: block; }
+    .header-logo { height: calc(var(--vw) * 1.458); width: auto; display: block; }
 
-    .header-nav { display: flex; gap: 3.125vw; align-items: center; }
+    .header-nav { display: flex; gap: calc(var(--vw) * 3.125); align-items: center; }
 
     .header-nav a {
       font-family: Arial, sans-serif;
-      font-size: 0.833vw;
+      font-size: calc(var(--vw) * 0.833);
       text-decoration: none;
       color: #999796;
     }
@@ -48,26 +53,26 @@
       background: #000;
       color: #fff;
       font-family: Arial, sans-serif;
-      font-size: 0.833vw;
-      padding: 0.417vw 1.042vw;
-      border-radius: 0.729vw;
+      font-size: calc(var(--vw) * 0.833);
+      padding: calc(var(--vw) * 0.417) calc(var(--vw) * 1.042);
+      border-radius: calc(var(--vw) * 0.729);
       text-decoration: none;
     }
 
-    /* PAGE BODY — top 199px, left 60px, right 60px */
+    /* PAGE BODY */
     .page-body {
-      padding-top: 10.365vw;
-      padding-left: 3.125vw;
-      padding-right: 3.125vw;
-      padding-bottom: 4.167vw;
+      padding-top: calc(var(--vw) * 10.365);
+      padding-left: calc(var(--vw) * 3.125);
+      padding-right: calc(var(--vw) * 3.125);
+      padding-bottom: calc(var(--vw) * 4.167);
     }
 
-    /* TEXT — gap 20px */
-    .project-txt { display: flex; flex-direction: column; gap: 1.042vw; }
+    /* TEXT */
+    .project-txt { display: flex; flex-direction: column; gap: calc(var(--vw) * 1.042); }
 
     .project-txt h1 {
       font-family: Arial, sans-serif;
-      font-size: 2.5vw;
+      font-size: calc(var(--vw) * 2.5);
       font-weight: 400;
       color: #000;
       line-height: 1.1;
@@ -75,20 +80,19 @@
 
     .project-txt p {
       font-family: 'Pretendard Variable', Pretendard, sans-serif;
-      font-size: 1.25vw;
+      font-size: calc(var(--vw) * 1.25);
       font-weight: 400;
       color: #999796;
       line-height: 1.4;
     }
 
-    /* GALLERY — margin-top 60px, row gap 40px, col gap 10px */
-    .project-gallery { margin-top: 3.125vw; display: flex; flex-direction: column; gap: 2.083vw; }
+    /* GALLERY */
+    .project-gallery { margin-top: calc(var(--vw) * 3.125); display: flex; flex-direction: column; gap: calc(var(--vw) * 2.083); }
 
-    .gallery-row { display: flex; gap: 0.521vw; }
+    .gallery-row { display: flex; gap: calc(var(--vw) * 0.521); }
 
-    .gallery-item { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.521vw; }
+    .gallery-item { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: calc(var(--vw) * 0.521); }
 
-    /* 895x504 = 16:9 */
     .gallery-media {
       width: 100%;
       aspect-ratio: 895 / 504;
@@ -105,27 +109,27 @@
       justify-content: center;
     }
 
-    .starbucks-logo { display: flex; align-items: center; gap: 1.25vw; }
+    .starbucks-logo { display: flex; align-items: center; gap: calc(var(--vw) * 1.25); }
 
-    .starbucks-siren { width: 5.573vw; height: 5.573vw; object-fit: contain; display: block; }
+    .starbucks-siren { width: calc(var(--vw) * 5.573); height: calc(var(--vw) * 5.573); object-fit: contain; display: block; }
 
-    .starbucks-wordmark { display: flex; flex-direction: column; gap: 0.208vw; }
+    .starbucks-wordmark { display: flex; flex-direction: column; gap: calc(var(--vw) * 0.208); }
 
     .starbucks-wordmark .brand {
       font-family: Arial, sans-serif;
-      font-size: 1.563vw;
+      font-size: calc(var(--vw) * 1.563);
       font-weight: 700;
       color: #fff;
-      letter-spacing: 0.208vw;
+      letter-spacing: calc(var(--vw) * 0.208);
       line-height: 1;
     }
 
     .starbucks-wordmark .sub {
       font-family: Arial, sans-serif;
-      font-size: 0.729vw;
+      font-size: calc(var(--vw) * 0.729);
       font-weight: 400;
       color: #fff;
-      letter-spacing: 0.208vw;
+      letter-spacing: calc(var(--vw) * 0.208);
       line-height: 1;
     }
 
@@ -134,14 +138,14 @@
 
     .gallery-label span {
       font-family: 'Pretendard Variable', Pretendard, sans-serif;
-      font-size: 0.833vw;
+      font-size: calc(var(--vw) * 0.833);
       font-weight: 500;
       color: #000;
     }
 
-    .arrow-icon { width: 1.205vw; height: 1.205vw; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .arrow-icon { width: calc(var(--vw) * 1.205); height: calc(var(--vw) * 1.205); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-    .arrow-icon img { width: 0.781vw; height: 0.938vw; transform: rotate(45deg); display: block; }
+    .arrow-icon img { width: calc(var(--vw) * 0.781); height: calc(var(--vw) * 0.938); transform: rotate(45deg); display: block; }
   </style>
 </head>
 <body>
@@ -157,14 +161,12 @@
   </header>
 
   <div class="page-body">
-
     <div class="project-txt">
       <h1>Creative solution comes from<br>Creative connection.</h1>
       <p>히즈는 창의적인 연결을 통해 함께 일합니다.<br>세상의 변화를 예민하게 살피고 분야의 전문가들을 연결하여 문제를 해결합니다.</p>
     </div>
 
     <div class="project-gallery">
-
       <div class="gallery-row">
         <div class="gallery-item">
           <div class="gallery-media">
@@ -222,9 +224,17 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
+  <script>
+    function updateVW() {
+      // 1920px 초과하면 1920px 기준으로 고정, 이하면 뷰포트 기준으로 비례 축소
+      var w = Math.min(window.innerWidth, 1920);
+      document.documentElement.style.setProperty('--vw', (w / 100) + 'px');
+    }
+    updateVW();
+    window.addEventListener('resize', updateVW);
+  </script>
 </body>
 </html>
