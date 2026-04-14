@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HIZ — Project</title>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,28 +39,18 @@
       z-index: 100;
     }
 
-    .header-logo {
-      height: 28px;
-      width: auto;
-    }
+    .header-logo { height: 28px; width: auto; }
 
-    .header-nav {
-      display: flex;
-      gap: 60px;
-      align-items: center;
-    }
+    .header-nav { display: flex; gap: 60px; align-items: center; }
 
     .header-nav a {
       font-family: Arial, sans-serif;
       font-size: 16px;
       text-decoration: none;
       color: #999796;
-      cursor: pointer;
     }
 
-    .header-nav a.active {
-      color: #000;
-    }
+    .header-nav a.active { color: #000; }
 
     .header-contact {
       background: #000;
@@ -71,7 +60,6 @@
       padding: 8px 20px;
       border-radius: 14px;
       text-decoration: none;
-      cursor: pointer;
     }
 
     /* ── BODY ── */
@@ -83,11 +71,7 @@
     }
 
     /* ── TEXT ── */
-    .project-txt {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .project-txt { display: flex; flex-direction: column; gap: 20px; }
 
     .project-txt h1 {
       font-family: Arial, sans-serif;
@@ -113,10 +97,7 @@
       gap: 40px;
     }
 
-    .gallery-row {
-      display: flex;
-      gap: 10px;
-    }
+    .gallery-row { display: flex; gap: 10px; }
 
     .gallery-item {
       width: 895px;
@@ -124,64 +105,68 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      cursor: pointer;
     }
 
     .gallery-media {
       width: 895px;
       height: 504px;
+      flex-shrink: 0;
       overflow: hidden;
       position: relative;
-      flex-shrink: 0;
     }
 
-    .gallery-media img,
-    .gallery-media video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* placeholder colors */
+    /* GoVenture: 영상 썸네일 대용 그라디언트 */
     .media-goventure {
-      background: #111;
+      background:
+        radial-gradient(ellipse 60% 80% at 20% 60%, #c44010 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 70% 20%, #222244 0%, transparent 50%),
+        #080808;
     }
 
+    /* Starbucks */
     .media-starbucks {
       background: #00764b;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .starbucks-logo {
+      display: flex;
+      align-items: center;
       gap: 24px;
     }
 
     .starbucks-siren {
-      width: 80px;
-      height: 80px;
+      width: 107px;
+      height: 107px;
       object-fit: contain;
+      flex-shrink: 0;
+      display: block;
     }
 
-    .starbucks-text {
+    .starbucks-wordmark {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
     }
 
-    .starbucks-text .brand {
+    .starbucks-wordmark .brand {
       font-family: Arial, sans-serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 700;
       color: #fff;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
+      line-height: 1;
     }
 
-    .starbucks-text .sub {
+    .starbucks-wordmark .sub {
       font-family: Arial, sans-serif;
       font-size: 14px;
       font-weight: 400;
       color: #fff;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
+      line-height: 1;
     }
 
     /* ── LABEL ── */
@@ -212,6 +197,7 @@
       width: 15px;
       height: 18px;
       transform: rotate(45deg);
+      display: block;
     }
   </style>
 </head>
@@ -220,11 +206,7 @@
 
   <!-- HEADER -->
   <header class="header">
-    <a href="#">
-      <img class="header-logo"
-           src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9"
-           alt="hiz">
-    </a>
+    <a href="#"><img class="header-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz"></a>
     <nav class="header-nav">
       <a href="#" class="active">Project</a>
       <a href="#">About</a>
@@ -236,14 +218,11 @@
   <!-- BODY -->
   <div class="page-body">
 
-    <!-- TEXT -->
     <div class="project-txt">
       <h1>Creative solution comes from<br>Creative connection.</h1>
-      <p>히즈는 창의적인 연결을 통해 함께 일합니다.<br>
-         세상의 변화를 예민하게 살피고 분야의 전문가들을 연결하여 문제를 해결합니다.</p>
+      <p>히즈는 창의적인 연결을 통해 함께 일합니다.<br>세상의 변화를 예민하게 살피고 분야의 전문가들을 연결하여 문제를 해결합니다.</p>
     </div>
 
-    <!-- GALLERY -->
     <div class="project-gallery">
 
       <!-- ROW 1 -->
@@ -253,24 +232,24 @@
           <div class="gallery-label">
             <span>GoVenture Forum</span>
             <div class="arrow-icon">
-              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="→">
+              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="">
             </div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="gallery-media media-starbucks">
-            <img class="starbucks-siren"
-                 src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32"
-                 alt="">
-            <div class="starbucks-text">
-              <div class="brand">STARBUCKS<sup>®</sup></div>
-              <div class="sub">COFFEE AT HOME</div>
+            <div class="starbucks-logo">
+              <img class="starbucks-siren" src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32" alt="">
+              <div class="starbucks-wordmark">
+                <div class="brand">STARBUCKS<sup style="font-size:18px">®</sup></div>
+                <div class="sub">COFFEE AT HOME</div>
+              </div>
             </div>
           </div>
           <div class="gallery-label">
             <span>Starbucks® COFFEE AT HOME</span>
             <div class="arrow-icon">
-              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="→">
+              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="">
             </div>
           </div>
         </div>
@@ -283,24 +262,24 @@
           <div class="gallery-label">
             <span>GoVenture Forum</span>
             <div class="arrow-icon">
-              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="→">
+              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="">
             </div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="gallery-media media-starbucks">
-            <img class="starbucks-siren"
-                 src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32"
-                 alt="">
-            <div class="starbucks-text">
-              <div class="brand">STARBUCKS<sup>®</sup></div>
-              <div class="sub">COFFEE AT HOME</div>
+            <div class="starbucks-logo">
+              <img class="starbucks-siren" src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32" alt="">
+              <div class="starbucks-wordmark">
+                <div class="brand">STARBUCKS<sup style="font-size:18px">®</sup></div>
+                <div class="sub">COFFEE AT HOME</div>
+              </div>
             </div>
           </div>
           <div class="gallery-label">
             <span>Starbucks® COFFEE AT HOME</span>
             <div class="arrow-icon">
-              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="→">
+              <img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt="">
             </div>
           </div>
         </div>
@@ -312,8 +291,8 @@
 
 <script>
   function scale() {
-    const w = document.getElementById('scaleWrapper');
-    const s = window.innerWidth / 1920;
+    var w = document.getElementById('scaleWrapper');
+    var s = window.innerWidth / 1920;
     w.style.transform = 'scale(' + s + ')';
     document.body.style.height = Math.ceil(w.offsetHeight * s) + 'px';
   }
