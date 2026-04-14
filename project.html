@@ -21,8 +21,8 @@
     .header {
       position: fixed;
       top: calc(var(--vw) * 1.042);
-      left: calc(var(--vw) * 3.125);
-      right: calc(var(--vw) * 3.125);
+      left: calc(var(--vw) * 2.083);
+      right: calc(var(--vw) * 2.083);
       height: calc(var(--vw) * 3.073);
       background: rgba(252,251,250,0.2);
       border: 1px solid rgba(223,222,222,0.5);
@@ -63,6 +63,7 @@
       font-size: calc(var(--vw) * 0.833);
       text-decoration: none;
       color: #999796;
+      text-transform: uppercase;
     }
 
     .header-nav a.active { color: #000; }
@@ -75,33 +76,39 @@
       padding: calc(var(--vw) * 0.417) calc(var(--vw) * 1.042);
       border-radius: calc(var(--vw) * 0.729);
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     /* PAGE BODY */
     .page-body {
       padding-top: calc(var(--vw) * 10.365);
-      padding-left: calc(var(--vw) * 3.125);
-      padding-right: calc(var(--vw) * 3.125);
+      padding-left: calc(var(--vw) * 2.083);
+      padding-right: calc(var(--vw) * 2.083);
       padding-bottom: calc(var(--vw) * 4.167);
     }
 
     /* TEXT */
-    .project-txt { display: flex; flex-direction: column; gap: calc(var(--vw) * 1.042); }
+    .project-txt {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--vw) * 1.042);
+      padding-left: calc(var(--vw) * 1.042);
+    }
 
     .project-txt h1 {
       font-family: Arial, sans-serif;
-      font-size: calc(var(--vw) * 2.5);
+      font-size: calc(var(--vw) * 1.875);
       font-weight: 400;
       color: #000;
-      line-height: 1.1;
+      line-height: 1.2;
     }
 
     .project-txt p {
       font-family: 'Pretendard Variable', Pretendard, sans-serif;
-      font-size: calc(var(--vw) * 1.25);
+      font-size: calc(var(--vw) * 0.938);
       font-weight: 400;
       color: #999796;
-      line-height: 1.4;
+      line-height: 1.6;
     }
 
     /* GALLERY */
@@ -113,57 +120,27 @@
 
     .gallery-media {
       width: 100%;
-      aspect-ratio: 895 / 504;
+      aspect-ratio: 915 / 516;
       overflow: hidden;
       background: #080808;
     }
 
     .gallery-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .media-starbucks {
-      background: #00764b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .starbucks-logo { display: flex; align-items: center; gap: calc(var(--vw) * 1.25); }
-
-    .starbucks-siren { width: calc(var(--vw) * 5.573); height: calc(var(--vw) * 5.573); object-fit: contain; display: block; }
-
-    .starbucks-wordmark { display: flex; flex-direction: column; gap: calc(var(--vw) * 0.208); }
-
-    .starbucks-wordmark .brand {
-      font-family: Arial, sans-serif;
-      font-size: calc(var(--vw) * 1.563);
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: calc(var(--vw) * 0.208);
-      line-height: 1;
-    }
-
-    .starbucks-wordmark .sub {
-      font-family: Arial, sans-serif;
-      font-size: calc(var(--vw) * 0.729);
-      font-weight: 400;
-      color: #fff;
-      letter-spacing: calc(var(--vw) * 0.208);
-      line-height: 1;
+    .gallery-media-placeholder {
+      background: #c4c4c4;
     }
 
     /* LABEL */
-    .gallery-label { display: flex; align-items: center; justify-content: space-between; }
+    .gallery-label { display: flex; align-items: center; }
 
     .gallery-label span {
       font-family: 'Pretendard Variable', Pretendard, sans-serif;
-      font-size: calc(var(--vw) * 0.833);
+      font-size: calc(var(--vw) * 0.729);
       font-weight: 500;
       color: #000;
     }
-
-    .arrow-icon { width: calc(var(--vw) * 1.205); height: calc(var(--vw) * 1.205); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-    .arrow-icon img { width: calc(var(--vw) * 0.781); height: calc(var(--vw) * 0.938); transform: rotate(45deg); display: block; }
   </style>
 </head>
 <body>
@@ -194,51 +171,29 @@
           </div>
           <div class="gallery-label">
             <span>GoVenture Forum</span>
-            <div class="arrow-icon"><img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt=""></div>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-media media-starbucks">
-            <div class="starbucks-logo">
-              <img class="starbucks-siren" src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32" alt="">
-              <div class="starbucks-wordmark">
-                <div class="brand">STARBUCKS®</div>
-                <div class="sub">COFFEE AT HOME</div>
-              </div>
-            </div>
+          <div class="gallery-media">
+            <img src="https://www.figma.com/api/mcp/asset/b76aa62f-606c-4bab-8496-10118e69be9b" alt="Starbucks COFFEE AT HOME">
           </div>
           <div class="gallery-label">
             <span>Starbucks® COFFEE AT HOME</span>
-            <div class="arrow-icon"><img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt=""></div>
           </div>
         </div>
       </div>
 
       <div class="gallery-row">
         <div class="gallery-item">
-          <div class="gallery-media">
-            <video autoplay muted loop playsinline>
-              <source src="/media/goventure.mp4" type="video/mp4">
-            </video>
-          </div>
+          <div class="gallery-media gallery-media-placeholder"></div>
           <div class="gallery-label">
-            <span>GoVenture Forum</span>
-            <div class="arrow-icon"><img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt=""></div>
+            <span></span>
           </div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-media media-starbucks">
-            <div class="starbucks-logo">
-              <img class="starbucks-siren" src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32" alt="">
-              <div class="starbucks-wordmark">
-                <div class="brand">STARBUCKS®</div>
-                <div class="sub">COFFEE AT HOME</div>
-              </div>
-            </div>
-          </div>
+          <div class="gallery-media gallery-media-placeholder"></div>
           <div class="gallery-label">
-            <span>Starbucks® COFFEE AT HOME</span>
-            <div class="arrow-icon"><img src="https://www.figma.com/api/mcp/asset/865f58ba-e570-4edd-ba8e-34224851d17e" alt=""></div>
+            <span></span>
           </div>
         </div>
       </div>
