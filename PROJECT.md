@@ -97,6 +97,9 @@ git push
 |---|---|
 | 2026-04-14 | project.html 퍼블리싱, GitHub/Vercel 세팅 완료 |
 | 2026-04-14 | /media/ 폴더 컨벤션 수립, video 태그 연결 |
+| 2026-04-14 | goventure.mp4 영상 적용 |
+| 2026-04-14 | --vw CSS 변수 방식으로 반응형 전환 (1920px 기준 고정) |
+| 2026-04-14 | 헤더 글라스모피즘: opacity 0.2, blur 4px, 반사선 ::after, inset box-shadow |
 
 ---
 
