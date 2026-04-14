@@ -54,7 +54,7 @@
 - **HTML/CSS/JS** 순수 바닐라 (프레임워크 없음)
 - **폰트**: Pretendard Variable (CDN), Arial
 - **배포**: Vercel (GitHub 연동, git push → 자동 배포)
-- **스케일링**: 1920px 기준 `transform: scale()` 방식 (모바일 반응형 추후 추가 예정)
+- **스케일링**: `--vw` CSS 변수 방식. JS로 `min(innerWidth, 1920) / 100`px 설정. 모든 크기값은 `calc(var(--vw) * X)` 사용. 1920px 초과 화면에서 고정, 이하에서 비례 축소.
 
 ---
 
