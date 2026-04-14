@@ -6,6 +6,8 @@
   <title>HIZ — Project</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
   <style>
+    /* 1920px 기준 vw 변환: px → vw = px / 1920 * 100 */
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -13,39 +15,40 @@
       overflow-x: hidden;
     }
 
-    #scaleWrapper {
-      width: 1920px;
-      transform-origin: top left;
-      position: relative;
-      padding-bottom: 80px;
-    }
-
     /* ── HEADER ── */
+    /* top:20, left:60, right:60, height:59, radius:22, pad:0 40 */
     .header {
-      position: absolute;
-      top: 20px;
-      left: 60px;
-      right: 60px;
-      height: 59px;
+      position: fixed;
+      top: 1.042vw;        /* 20/1920 */
+      left: 3.125vw;       /* 60/1920 */
+      right: 3.125vw;
+      height: 3.073vw;     /* 59/1920 */
       background: rgba(252, 251, 250, 0.6);
-      border: 1px solid #dfdede;
-      border-radius: 22px;
+      border: 0.052vw solid #dfdede;
+      border-radius: 1.146vw; /* 22/1920 */
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
+      padding: 0 2.083vw;  /* 40/1920 */
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       z-index: 100;
     }
 
-    .header-logo { height: 28px; width: auto; }
+    .header-logo {
+      height: 1.458vw;     /* 28/1920 */
+      width: auto;
+    }
 
-    .header-nav { display: flex; gap: 60px; align-items: center; }
+    .header-nav {
+      display: flex;
+      gap: 3.125vw;        /* 60/1920 */
+      align-items: center;
+    }
 
     .header-nav a {
       font-family: Arial, sans-serif;
-      font-size: 16px;
+      font-size: 0.833vw;  /* 16/1920 */
       text-decoration: none;
       color: #999796;
     }
@@ -56,76 +59,84 @@
       background: #000;
       color: #fff;
       font-family: Arial, sans-serif;
-      font-size: 16px;
-      padding: 8px 20px;
-      border-radius: 14px;
+      font-size: 0.833vw;
+      padding: 0.417vw 1.042vw; /* 8 20 */
+      border-radius: 0.729vw;   /* 14/1920 */
       text-decoration: none;
     }
 
-    /* ── BODY ── */
+    /* ── PAGE BODY ── */
+    /* top:199, left:60, width:1800 */
     .page-body {
-      position: absolute;
-      top: 199px;
-      left: 60px;
-      width: 1800px;
+      padding-top: 10.365vw; /* 199/1920 */
+      padding-left: 3.125vw;
+      padding-right: 3.125vw;
+      padding-bottom: 4.167vw;
     }
 
     /* ── TEXT ── */
-    .project-txt { display: flex; flex-direction: column; gap: 20px; }
+    /* gap:20 */
+    .project-txt {
+      display: flex;
+      flex-direction: column;
+      gap: 1.042vw;
+    }
 
+    /* font-size:48 */
     .project-txt h1 {
       font-family: Arial, sans-serif;
-      font-size: 48px;
+      font-size: 2.5vw;
       font-weight: 400;
       color: #000;
       line-height: 1.1;
     }
 
+    /* font-size:24 */
     .project-txt p {
       font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
       font-weight: 400;
-      font-size: 24px;
+      font-size: 1.25vw;
       color: #999796;
       line-height: 1.4;
     }
 
     /* ── GALLERY ── */
+    /* margin-top:60, gap rows:40 */
     .project-gallery {
-      margin-top: 60px;
+      margin-top: 3.125vw;
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 2.083vw;
     }
 
-    .gallery-row { display: flex; gap: 10px; }
+    /* gap cols:10 */
+    .gallery-row {
+      display: flex;
+      gap: 0.521vw;
+    }
 
+    /* width:895 = 46.615vw, gap:10 */
     .gallery-item {
-      width: 895px;
-      flex-shrink: 0;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 0.521vw;
     }
 
+    /* width:895, height:504 (16:9) */
     .gallery-media {
-      width: 895px;
-      height: 504px;
-      flex-shrink: 0;
+      width: 100%;
+      aspect-ratio: 895 / 504;
       overflow: hidden;
       position: relative;
+      background: #080808;
     }
 
-    /* 영상 공통 */
     .gallery-media video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    /* 영상 없을 때 폴백 배경 */
-    .gallery-media {
-      background: #080808;
     }
 
     /* Starbucks */
@@ -139,12 +150,12 @@
     .starbucks-logo {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 1.25vw;         /* 24/1920 */
     }
 
     .starbucks-siren {
-      width: 107px;
-      height: 107px;
+      width: 5.573vw;      /* 107/1920 */
+      height: 5.573vw;
       object-fit: contain;
       flex-shrink: 0;
       display: block;
@@ -153,45 +164,45 @@
     .starbucks-wordmark {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 0.208vw;
     }
 
     .starbucks-wordmark .brand {
       font-family: Arial, sans-serif;
-      font-size: 30px;
+      font-size: 1.563vw;  /* 30/1920 */
       font-weight: 700;
       color: #fff;
-      letter-spacing: 4px;
+      letter-spacing: 0.208vw;
       line-height: 1;
     }
 
     .starbucks-wordmark .sub {
       font-family: Arial, sans-serif;
-      font-size: 14px;
+      font-size: 0.729vw;  /* 14/1920 */
       font-weight: 400;
       color: #fff;
-      letter-spacing: 4px;
+      letter-spacing: 0.208vw;
       line-height: 1;
     }
 
     /* ── LABEL ── */
+    /* font-size:16 */
     .gallery-label {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 895px;
     }
 
     .gallery-label span {
       font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 0.833vw;
       color: #000;
     }
 
     .arrow-icon {
-      width: 23px;
-      height: 23px;
+      width: 1.205vw;      /* 23/1920 */
+      height: 1.205vw;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -199,15 +210,14 @@
     }
 
     .arrow-icon img {
-      width: 15px;
-      height: 18px;
+      width: 0.781vw;      /* 15/1920 */
+      height: 0.938vw;     /* 18/1920 */
       transform: rotate(45deg);
       display: block;
     }
   </style>
 </head>
 <body>
-<div id="scaleWrapper">
 
   <!-- HEADER -->
   <header class="header">
@@ -250,7 +260,7 @@
             <div class="starbucks-logo">
               <img class="starbucks-siren" src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32" alt="">
               <div class="starbucks-wordmark">
-                <div class="brand">STARBUCKS<sup style="font-size:18px">®</sup></div>
+                <div class="brand">STARBUCKS<sup style="font-size:0.938vw">®</sup></div>
                 <div class="sub">COFFEE AT HOME</div>
               </div>
             </div>
@@ -284,7 +294,7 @@
             <div class="starbucks-logo">
               <img class="starbucks-siren" src="https://www.figma.com/api/mcp/asset/48859467-4589-40d4-9a23-784e8b53ef32" alt="">
               <div class="starbucks-wordmark">
-                <div class="brand">STARBUCKS<sup style="font-size:18px">®</sup></div>
+                <div class="brand">STARBUCKS<sup style="font-size:0.938vw">®</sup></div>
                 <div class="sub">COFFEE AT HOME</div>
               </div>
             </div>
@@ -300,21 +310,6 @@
 
     </div>
   </div>
-</div>
 
-<script>
-  function scale() {
-    var wrapper = document.getElementById('scaleWrapper');
-    var s = window.innerWidth / 1920;
-    wrapper.style.transform = 'scale(' + s + ')';
-    wrapper.style.transformOrigin = 'top left';
-    // scaleWrapper의 실제 렌더링 높이를 계산해서 body에 반영
-    var contentHeight = wrapper.scrollHeight;
-    document.body.style.height = Math.ceil(contentHeight * s) + 'px';
-  }
-  window.addEventListener('load', scale);
-  window.addEventListener('resize', scale);
-  scale();
-</script>
 </body>
 </html>
