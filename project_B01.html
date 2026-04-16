@@ -36,12 +36,13 @@
 
     .marquee-bar {
       width: 100%;
-      height: calc(var(--vw) * 2.083); /* 40px */
+      height: calc(var(--vw) * 2.344); /* 45px — 로고 하단 클리핑 방지 */
       background: #000;
       border-radius: calc(var(--vw) * 0.625); /* 12px */
       overflow: hidden;
       display: flex;
       align-items: center;
+      padding: calc(var(--vw) * 0.26) 0; /* 5px 상하 여백 → z 하단 짤림 방지 */
     }
 
     .marquee-track {
@@ -165,6 +166,20 @@
       font-size: calc(var(--vw) * 0.833); /* 16px */
       font-weight: 400;
       color: #000;
+    }
+
+    /* 열 사이 세로 구분선 — Figma Vector 2, Vector 3 */
+    .gallery-item {
+      position: relative;
+    }
+    .gallery-item:not(:nth-child(3n))::after {
+      content: '';
+      position: absolute;
+      right: calc(var(--vw) * -0.612); /* column-gap(23.5px)의 절반 */
+      top: 0;
+      height: 100%;
+      width: 1px;
+      background: #000;
     }
 
     /* 이미지: 571:714 비율, R값 없음 */
