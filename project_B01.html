@@ -26,11 +26,19 @@
       background: rgba(255,255,255,0.9);
     }
 
-    /* 마키 바 */
+    /* 마키 섹션: 흰 배경 + 상단 패딩 */
+    /* Figma: bg-white, pt-20px wrapper → 내부 마키 바 w-1760 h-40 rounded-12 black */
+    .marquee-section {
+      width: 100%;
+      padding: calc(var(--vw) * 1.042) calc(var(--vw) * 4.167) 0; /* top:20px, 좌우:80px */
+      background: rgba(255,255,255,0.9);
+    }
+
     .marquee-bar {
       width: 100%;
-      height: calc(var(--vw) * 3.125); /* 60px → 40px (40/1920*100=2.083) 실제 피그마: 20px padding + 40px bar = 60px */
+      height: calc(var(--vw) * 2.083); /* 40px */
       background: #000;
+      border-radius: calc(var(--vw) * 0.625); /* 12px */
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -183,7 +191,8 @@
 <body>
 
   <header class="header">
-    <!-- 마키 바 -->
+    <!-- 마키 섹션: 흰 배경 wrapper + pill 형태 검정 마키 바 -->
+    <div class="marquee-section">
     <div class="marquee-bar">
       <div class="marquee-track">
         <!-- 2배 복사로 무한 루프 -->
@@ -209,6 +218,7 @@
         </div>
       </div>
     </div>
+    </div><!-- end marquee-section -->
 
     <!-- 메인 헤더 -->
     <div class="header-main">
