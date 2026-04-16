@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIZ — Project</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
+  <style>
+    /*
+      --vw = min(window.innerWidth, 1920) / 100  (JS로 설정)
+      1920px 기준: 모든 크기는 calc(var(--vw) * X) 사용
+    */
+    :root { --vw: 19.2px; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body { background: #fff; overflow-x: hidden; }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      top: calc(var(--vw) * 1.042);
+      left: calc(var(--vw) * 2.083);
+      right: calc(var(--vw) * 2.083);
+      height: calc(var(--vw) * 3.073);
+      background: rgba(252,251,250,0.2);
+      border: 1px solid rgba(223,222,222,0.5);
+      border-radius: calc(var(--vw) * 1.146);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 calc(var(--vw) * 2.083);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.8),
+        inset -1px -1px 0 rgba(0,0,0,0.06),
+        inset 0 -1px 0 rgba(255,255,255,0.6);
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      width: 90%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .header-logo { height: calc(var(--vw) * 1.458); width: auto; display: block; }
+
+    .header-nav { display: flex; gap: calc(var(--vw) * 3.125); align-items: center; }
+
+    .header-nav a {
+      font-family: Arial, sans-serif;
+      font-size: calc(var(--vw) * 0.729);
+      text-decoration: none;
+      color: #999796;
+      text-transform: uppercase;
+    }
+
+    .header-nav a.active { color: #000; }
+
+    .header-contact {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: calc(var(--vw) * 0.729);
+      padding: calc(var(--vw) * 0.417) calc(var(--vw) * 1.042);
+      border-radius: calc(var(--vw) * 0.729);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* PAGE BODY */
+    /* Figma: gallery container y=266, padding-left=80px */
+    .page-body {
+      padding-top: calc(var(--vw) * 13.854);
+      padding-left: calc(var(--vw) * 4.167);
+      padding-right: calc(var(--vw) * 4.167);
+      padding-bottom: calc(var(--vw) * 4.167);
+    }
+
+    /* GALLERY: 3열 그리드 */
+    /* Figma: 3col × 571px, gap=23.5px, row-gap=12px */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: calc(var(--vw) * 1.224);
+      row-gap: calc(var(--vw) * 0.625);
+    }
+
+    /* 각 아이템: 레이블(상단 구분선+텍스트) → 이미지 순서 */
+    .gallery-item {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--vw) * 3.125);
+    }
+
+    /* LABEL: 상단 구분선 + 프로젝트명 */
+    /* Figma: vector(divider line) at y=0, text at y=10, total label h=29px */
+    .gallery-label {
+      border-top: 1px solid #000;
+      padding-top: calc(var(--vw) * 0.521);
+    }
+
+    .gallery-label span {
+      display: block;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      font-size: calc(var(--vw) * 0.729);
+      font-weight: 500;
+      color: #000;
+    }
+
+    /* IMAGE: 세로 비율 571:714 */
+    .gallery-media {
+      width: 100%;
+      aspect-ratio: 571 / 714;
+      overflow: hidden;
+      background: #080808;
+      border-radius: calc(var(--vw) * 0.521);
+    }
+
+    .gallery-media video,
+    .gallery-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#"><img class="header-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz"></a>
+    <nav class="header-nav">
+      <a href="#" class="active">Project</a>
+      <a href="#">About</a>
+      <a href="#">Social</a>
+    </nav>
+    <a href="#" class="header-contact">Get in Touch</a>
+  </header>
+
+  <div class="page-body">
+    <div class="project-gallery">
+
+      <!-- Row 1 -->
+      <div class="gallery-item">
+        <div class="gallery-label"><span>GoVenture Forum</span></div>
+        <div class="gallery-media">
+          <video autoplay muted loop playsinline>
+            <source src="/media/goventure.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-label"><span>Starbucks® COFFEE AT HOME</span></div>
+        <div class="gallery-media">
+          <video autoplay muted loop playsinline>
+            <source src="/media/starbucks.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-label"><span>Hyundai Motor CMK Foundation</span></div>
+        <div class="gallery-media">
+          <video autoplay muted loop playsinline>
+            <source src="/media/cmk.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="gallery-item">
+        <div class="gallery-label"><span>NESCAFÉ® Dolce Gusto®</span></div>
+        <div class="gallery-media">
+          <img src="/media/nescafe.jpg" alt="NESCAFÉ® Dolce Gusto®">
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-label"><span>veggiet</span></div>
+        <div class="gallery-media">
+          <img src="/media/veggiet.jpg" alt="veggiet">
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-label"><span>ReSaltZ</span></div>
+        <div class="gallery-media">
+          <img src="/media/resaltz.jpg" alt="ReSaltZ">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function updateVW() {
+      var w = Math.min(window.innerWidth, 1920);
+      document.documentElement.style.setProperty('--vw', (w / 100) + 'px');
+    }
+    updateVW();
+    window.addEventListener('resize', updateVW);
+  </script>
+</body>
+</html>
