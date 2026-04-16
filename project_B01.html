@@ -34,11 +34,10 @@
       background: rgba(255,255,255,0.9);
     }
 
-    /* overflow:hidden을 bar 자체가 아닌 wrapper에 위임 — 로고 수직 클리핑 방지 */
     .marquee-bar {
       width: 100%;
-      border-radius: calc(var(--vw) * 0.625); /* 12px */
-      overflow: hidden; /* 가로 스크롤 클리핑 */
+      overflow-x: hidden; /* 세로 클리핑 없이 가로만 클리핑 → z 하단 짤림 방지 */
+      /* border-radius 없음 — Figma 디자인 변경 */
     }
 
     .marquee-bar-inner {
@@ -47,7 +46,6 @@
       height: calc(var(--vw) * 2.604); /* 50px */
       display: flex;
       align-items: center;
-      padding: calc(var(--vw) * 0.625) 0; /* 12px 상하 — z 하단이 clip edge에 닿지 않도록 */
     }
 
     .marquee-track {
@@ -347,8 +345,12 @@
         raf = requestAnimationFrame(tick);
       }
 
-      // 이미지 로드 후 측정
+      // 즉시 시작 (처음부터 움직임)
+      measure();
+      tick();
+      // 이미지 로드 완료 후 너비 재측정 (로고 img가 늦게 로드될 경우 대비)
       window.addEventListener('load', function() {
+        cancelAnimationFrame(raf);
         measure();
         tick();
       });
