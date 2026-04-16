@@ -47,21 +47,17 @@
     .marquee-track {
       display: flex;
       align-items: center;
-      gap: calc(var(--vw) * 5.208);
       white-space: nowrap;
-      animation: marquee 20s linear infinite;
-      width: max-content;
+      will-change: transform;
     }
 
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .marquee-item {
+    /* 끊김 없는 루프: JS가 세트를 복제, 정확한 픽셀 너비 기반 translateX 애니메이션 */
+    .marquee-set {
       display: flex;
       align-items: center;
-      gap: calc(var(--vw) * 5.208);
+      gap: calc(var(--vw) * 5.208); /* 100px */
+      padding-right: calc(var(--vw) * 5.208); /* 세트 끝에도 동일 간격 유지 */
+      flex-shrink: 0;
     }
 
     .marquee-text {
@@ -93,7 +89,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      height: calc(var(--vw) * 1.458);
+      height: calc(var(--vw) * 2.802); /* Figma: 헤더 100px 중 상하 23% 여백 → 53.8px */
       width: auto;
       display: block;
     }
@@ -193,31 +189,21 @@
   <header class="header">
     <!-- 마키 섹션: 흰 배경 wrapper + pill 형태 검정 마키 바 -->
     <div class="marquee-section">
-    <div class="marquee-bar">
-      <div class="marquee-track">
-        <!-- 2배 복사로 무한 루프 -->
-        <div class="marquee-item">
-          <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-          <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-          <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-          <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-        </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-          <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-          <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
-          <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
-          <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+      <div class="marquee-bar">
+        <div class="marquee-track" id="marqueeTrack">
+          <!-- JS가 .marquee-set 을 복제해서 seamless 루프 처리 -->
+          <div class="marquee-set">
+            <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+          </div>
         </div>
       </div>
-    </div>
     </div><!-- end marquee-section -->
 
     <!-- 메인 헤더 -->
@@ -313,6 +299,44 @@
     }
     updateVW();
     window.addEventListener('resize', updateVW);
+
+    /* ── Seamless marquee: JS 픽셀 기반 무한 루프 ── */
+    (function() {
+      var track = document.getElementById('marqueeTrack');
+      var set   = track.querySelector('.marquee-set');
+
+      // 세트를 1벌 더 복제 (정확히 동일한 DOM)
+      var clone = set.cloneNode(true);
+      track.appendChild(clone);
+
+      var pos      = 0;
+      var speed    = 0.6; // px/frame — 작을수록 느림
+      var setWidth = 0;
+      var raf;
+
+      function measure() {
+        setWidth = set.offsetWidth;
+      }
+
+      function tick() {
+        pos -= speed;
+        if (pos <= -setWidth) pos += setWidth; // 정확히 한 세트 너비만큼 리셋
+        track.style.transform = 'translateX(' + pos + 'px)';
+        raf = requestAnimationFrame(tick);
+      }
+
+      // 이미지 로드 후 측정
+      window.addEventListener('load', function() {
+        measure();
+        tick();
+      });
+
+      window.addEventListener('resize', function() {
+        cancelAnimationFrame(raf);
+        updateVW();
+        setTimeout(function() { measure(); tick(); }, 50);
+      });
+    })();
   </script>
 </body>
 </html>
