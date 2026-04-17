@@ -29,11 +29,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: calc(var(--vw) * 0.938) calc(var(--vw) * 2.083);
+      padding: calc(var(--vw) * 0.938) 0;
+      transition: transform 0.35s ease;
       overflow: hidden;
       z-index: 100;
     }
 
+
+    .header--hidden { transform: translateY(calc(-100% - calc(var(--vw) * 1.042) - 4px)); }
 
     .header-logo { height: calc(var(--vw) * 1.458); width: auto; display: block; }
 
@@ -126,7 +129,7 @@
 <body>
 
   <header class="header">
-    <a href="#"><img class="header-logo" src="https://www.figma.com/api/mcp/asset/942de55c-55f2-45f1-9d03-5d42b4ca8302" alt="hiz"></a>
+    <a href="#"><img class="header-logo" src="https://www.figma.com/api/mcp/asset/45c8a74c-0239-4f95-b091-8c5aef019181" alt="hiz"></a>
     <nav class="header-nav">
       <a href="#" class="active">Project</a>
       <a href="#">About</a>
@@ -215,6 +218,19 @@
     }
     updateVW();
     window.addEventListener('resize', updateVW);
+
+    // 헤더 스크롤 hide/show
+    var header = document.querySelector('.header');
+    var lastScrollY = 0;
+    window.addEventListener('scroll', function() {
+      var currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        header.classList.add('header--hidden');
+      } else {
+        header.classList.remove('header--hidden');
+      }
+      lastScrollY = currentScrollY;
+    });
   </script>
 </body>
 </html>
