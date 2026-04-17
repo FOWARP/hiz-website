@@ -122,8 +122,8 @@
     .reveal {
       opacity: 0;
       transform: translateY(32px);
-      transition: opacity 1.4s ease,
-                  transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.9s ease,
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .reveal.is-visible {
       opacity: 1;
@@ -233,7 +233,7 @@
 
     // Smooth scroll (Lenis)
     var lenis = new Lenis({
-      duration: 1.4,
+      duration: 0.9,
       easing: function(t) { return 1 - Math.pow(1 - t, 4); },
       smoothWheel: true
     });
