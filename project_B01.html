@@ -201,6 +201,18 @@
       object-fit: cover;
       display: block;
     }
+
+    /* ─── SCROLL REVEAL ──────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -320,6 +332,25 @@
     }
     updateVW();
     window.addEventListener('resize', updateVW);
+
+    // Scroll reveal
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      var targets = document.querySelectorAll('.gallery-item');
+      targets.forEach(function(el, i) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 0.08) + 's';
+        observer.observe(el);
+      });
+    })();
 
     /* ── Seamless marquee: JS 픽셀 기반 무한 루프 ── */
     (function() {

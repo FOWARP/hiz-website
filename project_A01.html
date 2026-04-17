@@ -117,6 +117,18 @@
     /* LABEL */
     .gallery-label { display: flex; align-items: center; }
 
+    /* ─── SCROLL REVEAL ──────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .gallery-label span {
       font-family: 'Pretendard Variable', Pretendard, sans-serif;
       font-size: calc(var(--vw) * 0.729);
@@ -217,6 +229,25 @@
     }
     updateVW();
     window.addEventListener('resize', updateVW);
+
+    // Scroll reveal
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      var targets = document.querySelectorAll('.project-txt, .gallery-item');
+      targets.forEach(function(el, i) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 0.08) + 's';
+        observer.observe(el);
+      });
+    })();
 
     // 헤더 스크롤 hide/show
     var header = document.querySelector('.header');
