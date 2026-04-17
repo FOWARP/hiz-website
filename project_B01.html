@@ -11,6 +11,13 @@
       --vw = min(window.innerWidth, 1920) / 100  (JS로 설정)
       1920px 기준: 모든 크기는 calc(var(--vw) * X) 사용
     */
+    @font-face {
+      font-family: 'Karlsbader Grotesk';
+      src: url('/fonts/KarlsbaderGrotesk-400.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
     :root { --vw: 19.2px; }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -106,7 +113,7 @@
     }
 
     .header-nav a {
-      font-family: Arial, sans-serif;
+      font-family: 'Karlsbader Grotesk', Arial, sans-serif;
       font-size: calc(var(--vw) * 0.729);
       text-decoration: none;
       color: #999796;
@@ -118,7 +125,7 @@
     .header-cta {
       background: #000;
       color: #fff;
-      font-family: Arial, sans-serif;
+      font-family: 'Karlsbader Grotesk', Arial, sans-serif;
       font-size: calc(var(--vw) * 0.729);
       padding: calc(var(--vw) * 0.625) calc(var(--vw) * 0.729);
       border-radius: calc(var(--vw) * 0.417);
@@ -227,13 +234,13 @@
           <!-- JS가 .marquee-set 을 복제해서 seamless 루프 처리 -->
           <div class="marquee-set">
             <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
-            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/e0e196c7-8adf-4524-a509-087229a33fa4" alt="hiz">
             <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
-            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/e0e196c7-8adf-4524-a509-087229a33fa4" alt="hiz">
             <span class="marquee-text">Brand Strategy &amp; Consulting Agency</span>
-            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/e0e196c7-8adf-4524-a509-087229a33fa4" alt="hiz">
             <span class="marquee-text">브랜드 전략 &amp; 컨설팅 에이전시</span>
-            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+            <img class="marquee-logo" src="https://www.figma.com/api/mcp/asset/e0e196c7-8adf-4524-a509-087229a33fa4" alt="hiz">
           </div>
         </div>
         </div><!-- end marquee-bar-inner -->
@@ -247,7 +254,7 @@
         <a href="#">About</a>
         <a href="#">Social</a>
       </nav>
-      <img class="header-logo-center" src="https://www.figma.com/api/mcp/asset/fa836ad8-48b7-4fb6-9979-5841e766f0f9" alt="hiz">
+      <img class="header-logo-center" src="https://www.figma.com/api/mcp/asset/04e785dc-079b-4da5-815d-0865c5a2efc8" alt="hiz">
       <a href="#" class="header-cta">Get in Touch</a>
     </div>
   </header>
