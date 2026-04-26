@@ -374,17 +374,24 @@
       var track = document.getElementById('marqueeTrack');
       var set   = track.querySelector('.marquee-set');
 
-      // 세트를 1벌 더 복제 (정확히 동일한 DOM)
-      var clone = set.cloneNode(true);
-      track.appendChild(clone);
-
       var pos      = 0;
       var speed    = 0.6; // px/frame — 작을수록 느림
       var setWidth = 0;
       var raf;
 
-      function measure() {
+      function fillClones() {
+        // 기존 복제본 제거
+        while (track.children.length > 1) track.removeChild(track.lastChild);
         setWidth = set.offsetWidth;
+        // 뷰포트를 넘길 때까지 복제 (최소 2벌)
+        var copies = Math.ceil(window.innerWidth / setWidth) + 1;
+        for (var i = 0; i < copies; i++) {
+          track.appendChild(set.cloneNode(true));
+        }
+      }
+
+      function measure() {
+        fillClones();
       }
 
       function tick() {
